@@ -18,6 +18,7 @@ export interface Card {
     condition: string;
     set: string;
     store: string;
+    image: string;
     isFoil: boolean;
     isBorderless: boolean;
     isRetro: boolean;
@@ -45,6 +46,7 @@ const transformResponse = (cards: CardResponse[]): Card[] => {
         condition: card.condition,
         set: card.setName,
         store: card.store,
+        image: card.imageUrl,
         isFoil: card.features.includes('Foil'),
         isBorderless: card.features.includes('Borderless'),
         isRetro: card.features.includes('Retro'),
