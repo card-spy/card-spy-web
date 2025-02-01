@@ -13,7 +13,8 @@ export const CardResult: FC<CardResultProps> = ({ card }) => {
                 <Image
                     src={card.image}
                     alt={card.name}
-                    className="h-24"
+                    height={96}
+                    width={69}
                 />
                 <div className="flex flex-col">
                     <div className="text-lg font-bold">{card.name}</div>
