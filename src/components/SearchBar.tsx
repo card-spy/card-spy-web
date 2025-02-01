@@ -10,7 +10,6 @@ export interface SearchBarProps {
 }
 
 export const SearchBar: FC<SearchBarProps> = ({ onChange }) => {
-
     const debounceChange = debounce({ delay: INPUT_DELAY }, (value) => value && onChange?.(value));
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

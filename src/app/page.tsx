@@ -1,6 +1,3 @@
-import { getCards } from "@/api/getCards";
-import { CardResult } from "@/components/CardResult";
-import { SearchBar } from "@/components/SearchBar";
 import Image from "next/image";
 import { CardSearch } from "./card-search";
 

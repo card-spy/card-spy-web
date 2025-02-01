@@ -6,12 +6,7 @@ import { SearchBar } from "@/components/SearchBar"
 import { uid } from "radash"
 import { FC, useState } from "react"
 
-interface CardSearchProps {
-
-}
-
-export const CardSearch: FC<CardSearchProps> = ({ }) => {
-
+export const CardSearch: FC = () => {
     const [searchResults, setSearchResults] = useState<Card[]>([])
 
     const handleChange = async (query: string) => {

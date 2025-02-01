@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Card } from "@/api/getCards"
 import { type FC } from "react"
 
@@ -9,7 +10,7 @@ export const CardResult: FC<CardResultProps> = ({ card }) => {
     return (
         <div className="flex flex-col gap-2 border border-solid border-black/[.08] dark:border-white/[.145] rounded-lg p-4 bg-black/[.05] dark:bg-white/[.06] w-full">
             <div className="flex gap-2 items-center">
-                <img
+                <Image
                     src={card.image}
                     alt={card.name}
                     className="h-24"
