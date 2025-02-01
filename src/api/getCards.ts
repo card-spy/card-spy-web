@@ -45,10 +45,14 @@ const transformResponse = (cards: CardResponse[]): Card[] => {
         price: card.price,
         condition: card.condition,
         set: card.setName,
-        store: card.store,
+        store: parseStoreName(card.store),
         image: card.imageUrl,
         isFoil: card.features.includes('Foil'),
         isBorderless: card.features.includes('Borderless'),
         isRetro: card.features.includes('Retro'),
     }))
+}
+
+const parseStoreName = (store: string): string => {
+    return store.replace('NZ/', '').trim();
 }
