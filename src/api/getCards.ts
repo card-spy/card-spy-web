@@ -24,10 +24,10 @@ export interface Card {
     isRetro: boolean;
 }
 
-export const getCards = async (query: string): Promise<Card[]> => {
+export const getCards = async (query: string, pageNumber: number = 1): Promise<Card[]> => {
     const encodedQueryString = encodeURIComponent(query);
 
-    const urlQuery = `https://www.mtgsingles.co.nz:14567/MtgSingle?query=${encodedQueryString}&page=1&pageSize=20&Country=1`
+    const urlQuery = `https://www.mtgsingles.co.nz:14567/MtgSingle?query=${encodedQueryString}&page=${pageNumber}&pageSize=20&Country=1`
 
     const res = await fetch(urlQuery)
         .then(response => response.body ? response.json() : [])
