@@ -17,7 +17,7 @@ export const SearchBar: FC<SearchBarProps> = ({ onChange }) => {
     }
 
     return <input
-        className="font-[family-name:var(--font-geist-mono)] text-white bg-black/[.05] dark:bg-white/[.06] px-2 py-0.5 rounded border border-solid border-black/[.08] dark:border-white/[.145] hover:border-white text-lg w-full h-12"
+        className="font-[family-name:var(--font-geist-mono)] text-white bg-black/[.05] dark:bg-white/[.06] px-2 py-0.5 rounded border border-solid border-black/[.08] dark:border-white/[.145] hover:border-white hover:focus:border-black/[.08] text-lg w-full h-12"
         type="text"
         onChange={handleChange}
         placeholder="Search for a card..."
