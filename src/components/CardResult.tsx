@@ -15,6 +15,7 @@ export const CardResult: FC<CardResultProps> = ({ card }) => {
                     alt={card.name}
                     height={96}
                     width={69}
+                    className="rounded-lg"
                 />
                 <div className="flex flex-col">
                     <div className="text-lg font-bold">{card.name}</div>
