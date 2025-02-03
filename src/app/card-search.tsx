@@ -4,7 +4,7 @@ import { Card, getCards } from "@/api/getCards"
 import { CardResult } from "@/components/CardResult"
 import { SearchBar } from "@/components/SearchBar"
 import { debounce, uid } from "radash"
-import { FC, useEffect, useState } from "react"
+import { FC, useEffect, useState, useTransition } from "react"
 
 const MIN_LENGTH = 3;
 
@@ -12,6 +12,8 @@ export const CardSearch: FC = () => {
     const [searchResults, setSearchResults] = useState<Card[]>([]);
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [pageNumber, setPageNumber] = useState<number>(1);
+
+    const [isPending, startTransition] = useTransition();
 
     const handleChange = (query: string) => {
         if (!query || query.length === 0) {
@@ -30,7 +32,7 @@ export const CardSearch: FC = () => {
     const handleScroll = () => {
         const reachedBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
 
-        if (reachedBottom) {
+        if (reachedBottom && !isPending) {
             setPageNumber(pageNumber + 1);
         }
     }
@@ -47,8 +49,10 @@ export const CardSearch: FC = () => {
 
     useEffect(() => {
         async function updateSearchResults() {
-            const cardData = await getCards(searchQuery, pageNumber);
-            setSearchResults(searchResults => [...searchResults, ...cardData]);
+            startTransition(async () => {
+                const cardData = await getCards(searchQuery, pageNumber);
+                setSearchResults(searchResults => [...searchResults, ...cardData]);
+            })
         }
         updateSearchResults();
     }, [searchQuery, pageNumber]);
