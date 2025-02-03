@@ -7,13 +7,21 @@ const INPUT_DELAY = 300;
 
 export interface SearchBarProps {
     onChange?: (value: string) => void;
+    onTypingComplete?: (value: string) => void;
 }
 
-export const SearchBar: FC<SearchBarProps> = ({ onChange }) => {
-    const debounceChange = debounce({ delay: INPUT_DELAY }, (value) => value && onChange?.(value));
+export const SearchBar: FC<SearchBarProps> = ({ onChange, onTypingComplete }) => {
+    const debounceChange = debounce({ delay: INPUT_DELAY }, (value) => handleTypingComplete(value));
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange?.(e.target.value);
         debounceChange(e.target.value);
+    }
+
+    const handleTypingComplete = (value: string) => {
+        if (value.length > 0) {
+            onTypingComplete?.(value);
+        }
     }
 
     return <input
