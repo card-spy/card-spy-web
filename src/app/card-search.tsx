@@ -2,9 +2,10 @@
 
 import { Card, getCards } from "@/api/getCards"
 import { CardResult } from "@/components/CardResult"
+import { ScrollHandler } from "@/components/ScrollHandler"
 import { SearchBar } from "@/components/SearchBar"
-import { debounce, uid } from "radash"
-import { FC, useEffect, useState, useTransition } from "react"
+import { uid } from "radash"
+import { type FC, useEffect, useState, useTransition } from "react"
 
 const MIN_LENGTH = 3;
 
@@ -29,23 +30,11 @@ export const CardSearch: FC = () => {
         }
     }
 
-    const handleScroll = () => {
-        const reachedBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
-
-        if (reachedBottom && !isPending) {
-            setPageNumber(pageNumber + 1);
+    const handleScrollToBottom = () => {
+        if (!isPending) {
+            setPageNumber((pageNumber) => pageNumber + 1);
         }
     }
-
-    const debounceScroll = debounce({ delay: 100 }, handleScroll);
-
-    useEffect(() => {
-        window.addEventListener('scroll', debounceScroll);
-
-        return () => {
-            window.removeEventListener('scroll', debounceScroll);
-        }
-    });
 
     useEffect(() => {
         async function updateSearchResults() {
@@ -59,6 +48,7 @@ export const CardSearch: FC = () => {
 
     return (
         <div className="flex flex-col gap-2 w-full">
+            <ScrollHandler onReachedBottom={handleScrollToBottom} />
             <SearchBar onChange={handleChange} onTypingComplete={handleTypingComplete} />
             {searchResults.map((card) => <CardResult key={uid(100)} card={card} />)}
         </div>
