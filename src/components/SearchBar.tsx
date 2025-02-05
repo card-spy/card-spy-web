@@ -3,7 +3,7 @@
 import { debounce } from "radash";
 import { type FC } from "react";
 
-const INPUT_DELAY = 300;
+const INPUT_DELAY = 750;
 
 export interface SearchBarProps {
     onChange?: (value: string) => void;
