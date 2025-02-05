@@ -16,11 +16,15 @@ export const CardSearch: FC = () => {
 
     const [isPending, startTransition] = useTransition();
 
+    const resetSearch = () => {
+        setSearchResults([])
+        setPageNumber(1)
+    }
+
     const handleChange = (query: string) => {
         if (!query || query.length === 0) {
-            setSearchResults([]);
+            resetSearch();
             setSearchQuery('');
-            setPageNumber(1);
         };
     }
 
@@ -36,14 +40,17 @@ export const CardSearch: FC = () => {
         }
     }
 
-    useEffect(() => {
-        async function updateSearchResults() {
-            startTransition(async () => {
-                const cardData = await getCards(searchQuery, pageNumber);
-                setSearchResults(searchResults => [...searchResults, ...cardData]);
-            })
+    const updateSearchResults = (query: string, page: number) => startTransition(async () => {
+        const cardData = await getCards(query, page);
+        if (cardData.length > 0) {
+            setSearchResults(searchResults => [...searchResults, ...cardData]);
         }
-        updateSearchResults();
+    })
+
+    useEffect(() => {
+        if (searchQuery.length > 0) {
+            updateSearchResults(searchQuery, pageNumber);
+        }
     }, [searchQuery, pageNumber]);
 
     return (
