@@ -30,6 +30,7 @@ export const CardSearch: FC = () => {
 
     const handleTypingComplete = (query: string) => {
         if (query.length >= MIN_LENGTH) {
+            resetSearch();
             setSearchQuery(query);
         }
     }
