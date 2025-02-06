@@ -1,32 +1,35 @@
-import { debounce } from "radash";
-import { type FC, useEffect } from "react"
+import { debounce } from 'radash';
+import { type FC, useEffect } from 'react';
 
 interface ScrollHandlerProps {
-    onScroll?: () => void;
-    onReachedBottom?: () => void;
+  onScroll?: () => void;
+  onReachedBottom?: () => void;
 }
 
-export const ScrollHandler: FC<ScrollHandlerProps> = ({ onScroll, onReachedBottom }) => {
+export const ScrollHandler: FC<ScrollHandlerProps> = ({
+  onScroll,
+  onReachedBottom,
+}) => {
+  const handleScroll = () => {
+    const reachedBottom =
+      window.innerHeight + window.scrollY >= document.body.offsetHeight;
 
-    const handleScroll = () => {
-        const reachedBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+    onScroll?.();
 
-        onScroll?.();
-
-        if (reachedBottom) {
-            onReachedBottom?.();
-        }
+    if (reachedBottom) {
+      onReachedBottom?.();
     }
+  };
 
-    const debounceScroll = debounce({ delay: 100 }, handleScroll);
+  const debounceScroll = debounce({ delay: 100 }, handleScroll);
 
-    useEffect(() => {
-        window.addEventListener('scroll', debounceScroll);
+  useEffect(() => {
+    window.addEventListener('scroll', debounceScroll);
 
-        return () => {
-            window.removeEventListener('scroll', debounceScroll);
-        }
-    });
+    return () => {
+      window.removeEventListener('scroll', debounceScroll);
+    };
+  });
 
-    return <></>;
-}
+  return <></>;
+};

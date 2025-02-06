@@ -1,8 +1,7 @@
-import Image from "next/image";
-import { CardSearch } from "./card-search";
+import Image from 'next/image';
+import { CardSearch } from './card-search';
 
 export default function Home() {
-
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen w-screen p-8 gap-16 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 items-center sm:items-start w-full">
