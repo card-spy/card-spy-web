@@ -13,12 +13,14 @@ export const CardSearch: FC = () => {
   const [searchResults, setSearchResults] = useState<Card[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [pageNumber, setPageNumber] = useState<number>(1);
+  const [isLastPage, setIsLastPage] = useState<boolean>(false);
 
   const [isPending, startTransition] = useTransition();
 
   const resetSearch = () => {
     setSearchResults([]);
     setPageNumber(1);
+    setIsLastPage(false);
   };
 
   const handleChange = (query: string) => {
@@ -36,7 +38,7 @@ export const CardSearch: FC = () => {
   };
 
   const handleScrollToBottom = () => {
-    if (!isPending) {
+    if (!isPending && !isLastPage) {
       setPageNumber((pageNumber) => pageNumber + 1);
     }
   };
@@ -46,6 +48,8 @@ export const CardSearch: FC = () => {
       const cardData = await getCards(query, page);
       if (cardData.length > 0) {
         setSearchResults((searchResults) => [...searchResults, ...cardData]);
+      } else {
+        setIsLastPage(true);
       }
     });
 
