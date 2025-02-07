@@ -4,13 +4,13 @@ import { CardSearch } from './card-search';
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen w-screen p-8 gap-16 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 items-center sm:items-start w-full">
+      <main className="flex flex-col gap-6 items-center sm:items-start w-full">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
+          className='w-72'
+          src="/card-spy.svg"
+          alt="Card Spy title"
           width={180}
-          height={38}
+          height={45}
           priority
         />
         <CardSearch />
