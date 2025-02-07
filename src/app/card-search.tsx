@@ -60,7 +60,7 @@ export const CardSearch: FC = () => {
   }, [searchQuery, pageNumber]);
 
   return (
-    <div className="flex flex-col gap-2 w-full">
+    <div className='flex flex-col gap-2 w-full'>
       <ScrollHandler onReachedBottom={handleScrollToBottom} />
       <SearchBar
         onChange={handleChange}
