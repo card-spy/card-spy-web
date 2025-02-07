@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Card Spy Web',
+  title: 'Card Spy',
   description: 'Web app for searching Magic: the Gathering cards',
 };
 
