@@ -1,45 +1,15 @@
 import Image from 'next/image';
 import { Card } from '@/api/getCards';
-import { RefObject, useLayoutEffect, useRef, useState, type FC } from 'react';
+import { useRef, useState, type FC } from 'react';
 import { FallbackCard } from './FallbackCard';
+import { ImagePreview } from './ImagePreview';
 
-const CARD_IMAGE_HEIGHT = 96;
-const CARD_IMAGE_WIDTH = 69;
+export const CARD_IMAGE_HEIGHT = 96;
+export const CARD_IMAGE_WIDTH = 69;
 
 interface CardResultProps {
   card: Card;
 }
-
-const ImagePreview = ({
-  cardImageUrl,
-  triggerRef,
-}: {
-  cardImageUrl: string;
-  triggerRef: RefObject<HTMLImageElement | null>;
-}) => {
-  const [state, setState] = useState({ top: 0, left: 0 });
-
-  useLayoutEffect(() => {
-    setState({
-      left: (triggerRef?.current?.offsetLeft || 0) + CARD_IMAGE_WIDTH,
-      top: (triggerRef?.current?.offsetTop || 0) - 144,
-    });
-  }, [triggerRef]);
-
-  return (
-    <Image
-      src={cardImageUrl}
-      height={CARD_IMAGE_HEIGHT * 4}
-      width={CARD_IMAGE_WIDTH * 4}
-      alt=''
-      className='absolute z-10 rounded-lg'
-      style={{
-        top: state.top,
-        left: state.left,
-      }}
-    />
-  );
-};
 
 export const CardResult: FC<CardResultProps> = ({ card }) => {
   const [imageHasError, setImageHasError] = useState(false);
