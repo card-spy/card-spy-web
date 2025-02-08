@@ -1,22 +1,17 @@
 import { type FC } from 'react';
-import Image from 'next/image';
+import { Icon } from '@iconify/react';
 
 export const Footer: FC = () => (
-  <footer className='row-start-3 flex gap-6 flex-wrap items-center justify-center'>
+  <footer className='row-start-3 flex flex-row p-2 gap-6 w-full flex-wrap items-center justify-between'>
     <a
       className='flex items-center gap-2 hover:underline hover:underline-offset-4'
       href='https://github.com/card-spy/card-spy-web'
       target='_blank'
       rel='noopener noreferrer'
     >
-      <Image
-        aria-hidden
-        src='/window.svg'
-        alt='Window icon'
-        width={16}
-        height={16}
-      />
-      Github Repo
+      <Icon icon='mdi:github' width='24' height='24' />
+      View Github Repo
     </a>
+    Copyright © Matthew Eden {new Date().getFullYear()}
   </footer>
 );

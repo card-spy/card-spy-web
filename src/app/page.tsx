@@ -4,7 +4,7 @@ import { Footer } from './footer';
 
 export default function Home() {
   return (
-    <div className='flex flex-col items-center justify-items-center min-h-screen w-screen p-8 gap-16 font-[family-name:var(--font-geist-sans)]'>
+    <div className='flex flex-col items-center justify-items-center min-h-screen w-screen p-8 gap-2 divide-y divide-solid divide-white font-[family-name:var(--font-geist-sans)]'>
       <main className='flex flex-col gap-6 items-center sm:items-start w-full'>
         <Image
           className='w-72'

@@ -138,6 +138,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@iconify/react@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "@iconify/react@npm:5.2.0"
+  dependencies:
+    "@iconify/types": "npm:^2.0.0"
+  peerDependencies:
+    react: ">=16"
+  checksum: 10c0/e63102e6408506058fc8a6a37681a8037bc9796c35ea9d334a8d741d5c0d89e72ce75f5bb6181c42c507d0252018ba5b8a118de87651efe1cc890899dc9f48bd
+  languageName: node
+  linkType: hard
+
+"@iconify/types@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@iconify/types@npm:2.0.0"
+  checksum: 10c0/65a3be43500c7ccacf360e136d00e1717f050b7b91da644e94370256ac66f582d59212bdb30d00788aab4fc078262e91c95b805d1808d654b72f6d2072a7e4b2
+  languageName: node
+  linkType: hard
+
 "@img/sharp-darwin-arm64@npm:0.33.5":
   version: 0.33.5
   resolution: "@img/sharp-darwin-arm64@npm:0.33.5"
@@ -1087,6 +1105,7 @@ __metadata:
   resolution: "card-spy-web@workspace:."
   dependencies:
     "@eslint/eslintrc": "npm:^3"
+    "@iconify/react": "npm:^5.2.0"
     "@next/eslint-plugin-next": "npm:^15.1.6"
     "@types/node": "npm:^20"
     "@types/react": "npm:^19"
