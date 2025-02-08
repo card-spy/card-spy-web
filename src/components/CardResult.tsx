@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Card } from '@/api/getCards';
 import { RefObject, useLayoutEffect, useRef, useState, type FC } from 'react';
+import { FallbackCard } from './FallbackCard';
 
 const CARD_IMAGE_HEIGHT = 96;
 const CARD_IMAGE_WIDTH = 69;
@@ -8,18 +9,6 @@ const CARD_IMAGE_WIDTH = 69;
 interface CardResultProps {
   card: Card;
 }
-
-const FallbackCard: FC = () => (
-  <div className='flex justify-center items-center h-24 w-[69px] border border-solid border-gray-300'>
-    <Image
-      aria-hidden
-      src='/planeswalker.svg'
-      alt='Planeswalker Symbol / MTG Logo'
-      width={64}
-      height={64}
-    />
-  </div>
-);
 
 const ImagePreview = ({
   cardImageUrl,
