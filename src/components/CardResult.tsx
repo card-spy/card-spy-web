@@ -27,7 +27,7 @@ export const CardResult: FC<CardResultProps> = ({ card }) => {
 
   return (
     <a
-      href='https://github.com/card-spy/card-spy-web'
+      href={card.storeLink}
       target='_blank'
       rel='noopener noreferrer'
       className='flex flex-row items-start justify-between w-full min-h-24 border-2 border-solid border-black/[.08] dark:border-white/[.145] hover:border-white rounded-lg p-4 bg-black/[.05] dark:bg-white/[.06] hover:bg-black transition-colors duration-300'
@@ -48,7 +48,7 @@ export const CardResult: FC<CardResultProps> = ({ card }) => {
         <div className='flex flex-col items-left'>
           <div className='text-lg font-bold'>{card.name}</div>
           <div className='text-sm text-gray-500'>{card.set}</div>
-          <div className='text-sm italic text-gray-400'>{card.store}</div>
+          <div className='text-sm italic text-gray-400'>{card.storeName}</div>
         </div>
       </div>
       <div className='flex flex-col gap-2 items-end w-fit'>

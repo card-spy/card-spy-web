@@ -17,7 +17,8 @@ export interface Card {
   price: string;
   condition: string;
   set: string;
-  store: string;
+  storeName: string;
+  storeLink: string;
   image: string;
   isFoil: boolean;
   isBorderless: boolean;
@@ -48,7 +49,8 @@ const transformResponse = (cards: CardResponse[]): Card[] => {
     price: card.price,
     condition: card.condition,
     set: card.setName,
-    store: parseStoreName(card.store),
+    storeName: parseStoreName(card.store),
+    storeLink: card.url,
     image: card.imageUrl,
     isFoil: card.features.includes('Foil'),
     isBorderless: card.features.includes('Borderless'),
