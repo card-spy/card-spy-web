@@ -59,5 +59,9 @@ const transformResponse = (cards: CardResponse[]): Card[] => {
 };
 
 const parseStoreName = (store: string): string => {
-  return store.replace('NZ/', '').trim();
+  const storeNameSanitised = store.replace('NZ/', '').trim();
+
+  const storeName = storeNameSanitised.split(/(?=[A-Z])/).join(' ');
+
+  return storeName;
 };
