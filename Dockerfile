@@ -17,7 +17,6 @@ WORKDIR /app
 # Install dependencies
 COPY . .
 COPY package.json yarn.lock* .yarnrc.yml ./
-ADD .yarn ./.yarn
 RUN yarn --immutable
 
 # Build the node project
