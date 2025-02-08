@@ -12,6 +12,6 @@ export const Footer: FC = () => (
       <Icon icon='mdi:github' width='24' height='24' />
       View Github Repo
     </a>
-    Copyright © Matthew Eden {new Date().getFullYear()}
+    Copyleft 🄯 Matthew Eden {new Date().getFullYear()}
   </footer>
 );
