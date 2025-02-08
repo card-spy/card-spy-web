@@ -26,7 +26,7 @@ export const CardResult: FC<CardResultProps> = ({ card }) => {
   }
 
   return (
-    <div className='flex flex-col gap-2 items-start justify-center w-full min-h-32 border-2 border-solid border-black/[.08] dark:border-white/[.145] hover:border-white rounded-lg p-4 bg-black/[.05] dark:bg-white/[.06]'>
+    <div className='flex flex-col gap-2 items-start justify-center w-full min-h-32 border-2 border-solid border-black/[.08] dark:border-white/[.145] hover:border-white rounded-lg p-4 bg-black/[.05] dark:bg-white/[.06] hover:bg-black transition-colors duration-300'>
       <div className='flex gap-2 items-center'>
         {imageHasError ? (
           <FallbackCard />
