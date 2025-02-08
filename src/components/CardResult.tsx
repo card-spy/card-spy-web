@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import { Card } from '@/api/getCards';
-import { useState, type FC } from 'react';
+import { RefObject, useLayoutEffect, useRef, useState, type FC } from 'react';
+
+const CARD_IMAGE_HEIGHT = 96;
+const CARD_IMAGE_WIDTH = 69;
 
 interface CardResultProps {
   card: Card;
@@ -18,8 +21,41 @@ const FallbackCard: FC = () => (
   </div>
 );
 
+const ImagePreview = ({
+  cardImageUrl,
+  triggerRef,
+}: {
+  cardImageUrl: string;
+  triggerRef: RefObject<HTMLImageElement | null>;
+}) => {
+  const [state, setState] = useState({ top: 0, left: 0 });
+
+  useLayoutEffect(() => {
+    setState({
+      left: (triggerRef?.current?.offsetLeft || 0) + CARD_IMAGE_WIDTH,
+      top: (triggerRef?.current?.offsetTop || 0) - 144,
+    });
+  }, [triggerRef]);
+
+  return (
+    <Image
+      src={cardImageUrl}
+      height={CARD_IMAGE_HEIGHT * 4}
+      width={CARD_IMAGE_WIDTH * 4}
+      alt=''
+      className='absolute z-10 rounded-lg'
+      style={{
+        top: state.top,
+        left: state.left,
+      }}
+    />
+  );
+};
+
 export const CardResult: FC<CardResultProps> = ({ card }) => {
   const [imageHasError, setImageHasError] = useState(false);
+  const [showImagePreview, setShowImagePreview] = useState(false);
+  const imageRef = useRef<HTMLImageElement>(null);
 
   if (!imageHasError && card.image.trim().length === 0) {
     setImageHasError(true);
@@ -43,7 +79,13 @@ export const CardResult: FC<CardResultProps> = ({ card }) => {
             width={69}
             className='rounded-lg'
             onError={() => setImageHasError(true)}
+            onMouseOver={() => setShowImagePreview(true)}
+            onMouseLeave={() => setShowImagePreview(false)}
+            ref={imageRef}
           />
+        )}
+        {showImagePreview && (
+          <ImagePreview cardImageUrl={card.image} triggerRef={imageRef} />
         )}
         <div className='flex flex-col items-left'>
           <div className='text-lg font-bold'>{card.name}</div>
