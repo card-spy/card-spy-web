@@ -3,6 +3,7 @@
 import { Card, getCards } from '@/api/getCards';
 import { CardResult } from '@/components/CardResult';
 import { CardResultSkeleton } from '@/components/CardResultSkeleton';
+import { NoResults } from '@/components/NoResults';
 import { ScrollHandler } from '@/components/ScrollHandler';
 import { SearchBar } from '@/components/SearchBar';
 import { uid } from 'radash';
@@ -70,6 +71,9 @@ export const CardSearch: FC = () => {
       {isPending && <CardResultSkeleton />}
       {!isPending &&
         searchResults.map((card) => <CardResult key={uid(100)} card={card} />)}
+      {!isPending && searchResults.length === 0 && searchQuery.length > 0 && (
+        <NoResults />
+      )}
     </div>
   );
 };
