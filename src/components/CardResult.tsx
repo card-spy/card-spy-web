@@ -36,11 +36,13 @@ export const CardResult: FC<CardResultProps> = ({ card }) => {
             alt={card.name}
             height={96}
             width={69}
+            ref={imageRef}
+            placeholder='blur'
+            blurDataURL={'/mtg-card-back.jpg'}
             className='rounded-lg'
             onError={() => setImageHasError(true)}
             onMouseOver={() => setShowImagePreview(true)}
             onMouseLeave={() => setShowImagePreview(false)}
-            ref={imageRef}
           />
         )}
         {showImagePreview && (
