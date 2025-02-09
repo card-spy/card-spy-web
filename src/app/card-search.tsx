@@ -2,6 +2,7 @@
 
 import { Card, getCards } from '@/api/getCards';
 import { CardResult } from '@/components/CardResult';
+import { CardResultSkeleton } from '@/components/CardResultSkeleton';
 import { ScrollHandler } from '@/components/ScrollHandler';
 import { SearchBar } from '@/components/SearchBar';
 import { uid } from 'radash';
@@ -66,9 +67,9 @@ export const CardSearch: FC = () => {
         onChange={handleChange}
         onTypingComplete={handleTypingComplete}
       />
-      {searchResults.map((card) => (
-        <CardResult key={uid(100)} card={card} />
-      ))}
+      {isPending && <CardResultSkeleton />}
+      {!isPending &&
+        searchResults.map((card) => <CardResult key={uid(100)} card={card} />)}
     </div>
   );
 };
