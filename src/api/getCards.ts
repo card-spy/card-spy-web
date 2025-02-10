@@ -44,7 +44,11 @@ export const getCards = async (
 };
 
 const transformResponse = (cards: CardResponse[]): Card[] => {
-  return cards.map((card) => ({
+  const filteredCards = cards.filter(
+    (card) => card.tcgType === 'MTG'
+  );
+
+  return filteredCards.map((card) => ({
     name: card.title,
     price: card.price,
     condition: card.condition,
