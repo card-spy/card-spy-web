@@ -12,7 +12,7 @@ export const ScrollHandler: FC<ScrollHandlerProps> = ({
 }) => {
   const handleScroll = () => {
     const reachedBottom =
-      window.innerHeight + window.scrollY >= document.body.offsetHeight;
+      window.innerHeight + window.scrollY * 1.15 >= document.body.offsetHeight;
 
     onScroll?.();
 
