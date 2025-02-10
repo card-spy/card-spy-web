@@ -13,7 +13,7 @@ export const ImagePreview = ({
 
   useLayoutEffect(() => {
     setState({
-      left: (triggerRef?.current?.offsetLeft || 0) + CARD_IMAGE_WIDTH,
+      left: (triggerRef?.current?.offsetLeft || 0) + CARD_IMAGE_WIDTH * 1.25,
       top: (triggerRef?.current?.offsetTop || 0) - CARD_IMAGE_HEIGHT * 1.5,
     });
   }, [triggerRef]);
