@@ -68,9 +68,10 @@ export const CardSearch: FC = () => {
         onChange={handleChange}
         onTypingComplete={handleTypingComplete}
       />
-      {isPending && <CardResultSkeleton />}
-      {!isPending &&
-        searchResults.map((card) => <CardResult key={uid(100)} card={card} />)}
+      {searchResults.map((card) => (
+        <CardResult key={uid(100)} card={card} />
+      ))}
+      {isPending && searchResults.length === 0 && <CardResultSkeleton />}
       {!isPending && searchResults.length === 0 && searchQuery.length > 0 && (
         <NoResults />
       )}
