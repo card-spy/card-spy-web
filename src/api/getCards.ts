@@ -56,7 +56,7 @@ const transformResponse = (cards: CardResponse[]): Card[] => {
     storeName: parseStoreName(card.store),
     storeLink: card.url,
     image: card.imageUrl,
-    isFoil: card.features.includes('Foil'),
+    isFoil: card.features.includes('Foil') || card.features.includes('Foil-Etched'),
     isBorderless: card.features.includes('Borderless'),
     isRetro: card.features.includes('Retro'),
   }));

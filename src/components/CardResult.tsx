@@ -3,6 +3,7 @@ import { Card } from '@/api/getCards';
 import { useRef, useState, type FC } from 'react';
 import { FallbackCard } from './FallbackCard';
 import { ImagePreview } from './ImagePreview';
+import { Icon } from '@iconify/react';
 
 export const CARD_IMAGE_HEIGHT = 96;
 export const CARD_IMAGE_WIDTH = 69;
@@ -54,6 +55,12 @@ export const CardResult: FC<CardResultProps> = ({ card }) => {
           <div className='text-xs sm:text-sm italic text-gray-400'>
             {card.storeName}
           </div>
+          {card.isFoil && (
+            <div className='flex flex-row items-center text-xs sm:text-sm text-orange-600 dark:text-amber-400'>
+              Foil
+              <Icon icon='fluent:sparkle-20-regular' width='20' height='20' />
+            </div>
+          )}
         </div>
       </div>
       <div className='flex flex-col gap-2 items-end w-fit'>
