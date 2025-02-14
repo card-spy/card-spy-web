@@ -49,13 +49,17 @@ export const CardResult: FC<CardResultProps> = ({ card }) => {
           <ImagePreview cardImageUrl={card.image} triggerRef={imageRef} />
         )}
         <div className='flex flex-col items-left'>
-          <div className='text-lg font-bold'>{card.name}</div>
-          <div className='text-sm text-gray-500'>{card.set}</div>
-          <div className='text-sm italic text-gray-400'>{card.storeName}</div>
+          <div className='text-sm sm:text-lg font-bold'>{card.name} </div>
+          <div className='text-xs sm:text-sm text-gray-500'>{card.set}</div>
+          <div className='text-xs sm:text-sm italic text-gray-400'>
+            {card.storeName}
+          </div>
         </div>
       </div>
       <div className='flex flex-col gap-2 items-end w-fit'>
-        <div className='text-xl dark:text-gray-100'>{card.price}</div>
+        <div className='text-lg sm:text-xl dark:text-gray-100'>
+          {card.price}
+        </div>
       </div>
     </a>
   );
