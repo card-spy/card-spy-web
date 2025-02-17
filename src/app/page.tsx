@@ -9,7 +9,7 @@ interface HomeParams {
 export default async function Home({
   searchParams,
 }: {
-  searchParams: HomeParams;
+  searchParams: Promise<HomeParams>;
 }) {
   const { q: query } = await searchParams;
 
