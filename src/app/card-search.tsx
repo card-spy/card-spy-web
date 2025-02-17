@@ -11,9 +11,19 @@ import { type FC, useEffect, useState, useTransition } from 'react';
 
 const MIN_LENGTH = 3;
 
-export const CardSearch: FC = () => {
+const updateUrl = (query: string) => {
+  const url = new URL(window.location.href);
+  url.searchParams.set('q', query);
+  window.history.pushState({}, '', url.toString());
+};
+
+interface CardSearchProps {
+  initialQuery?: string;
+}
+
+export const CardSearch: FC<CardSearchProps> = ({ initialQuery = '' }) => {
   const [searchResults, setSearchResults] = useState<Card[]>([]);
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [searchQuery, setSearchQuery] = useState<string>(initialQuery);
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [isLastPage, setIsLastPage] = useState<boolean>(false);
 
@@ -36,6 +46,7 @@ export const CardSearch: FC = () => {
     if (query.length >= MIN_LENGTH) {
       resetSearch();
       setSearchQuery(query);
+      updateUrl(query);
     }
   };
 
@@ -65,6 +76,7 @@ export const CardSearch: FC = () => {
     <div className='flex flex-col gap-2 w-full'>
       <ScrollHandler onReachedBottom={handleScrollToBottom} />
       <SearchBar
+        defaultValue={searchQuery}
         onChange={handleChange}
         onTypingComplete={handleTypingComplete}
       />
