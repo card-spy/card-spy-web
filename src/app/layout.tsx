@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import Head from 'next/head';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,15 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      {/* Next App Router doesn't currently support custom link tags in metadata */}
-      <Head>
-        <link
-          rel='search'
-          type='application/opensearchdescription+xml'
-          href='https://cards.matteas.nz/opensearch.xml'
-          title='Card Spy'
-        />
-      </Head>
+      <link
+        rel='search'
+        type='application/opensearchdescription+xml'
+        href='https://cards.matteas.nz/opensearch.xml'
+        title='Card Spy'
+      />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
