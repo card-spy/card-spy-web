@@ -4,6 +4,7 @@ import { useRef, useState, type FC } from 'react';
 import { FallbackCard } from './FallbackCard';
 import { ImagePreview } from './ImagePreview';
 import { Icon } from '@iconify/react';
+import { Base64PlaceholderImage } from './Base64PlaceholderImage';
 
 export const CARD_IMAGE_HEIGHT = 96;
 export const CARD_IMAGE_WIDTH = 69;
@@ -38,8 +39,7 @@ export const CardResult: FC<CardResultProps> = ({ card }) => {
             height={96}
             width={69}
             ref={imageRef}
-            placeholder='blur'
-            blurDataURL={'/mtg-card-back.jpg'}
+            placeholder={Base64PlaceholderImage}
             className='rounded-lg'
             onError={() => setImageHasError(true)}
             onMouseOver={() => setShowImagePreview(true)}
