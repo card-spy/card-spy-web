@@ -1,7 +1,11 @@
 import { type FC } from 'react';
 import { Icon } from '@iconify/react';
 
-export const Footer: FC = () => (
+interface FooterProps {
+  showCopyleftIcon?: boolean;
+}
+
+export const Footer: FC<FooterProps> = ({ showCopyleftIcon = true }) => (
   <footer className='row-start-3 flex flex-row p-2 gap-6 w-full flex-wrap items-center justify-between'>
     <a
       className='flex items-center gap-2 hover:underline hover:underline-offset-4'
@@ -12,6 +16,6 @@ export const Footer: FC = () => (
       <Icon icon='mdi:github' width='24' height='24' />
       View Github Repo
     </a>
-    Copyleft 🄯 Matthew Eden {new Date().getFullYear()}
+    Copyleft {showCopyleftIcon && '🄯'} Matthew Eden {new Date().getFullYear()}
   </footer>
 );

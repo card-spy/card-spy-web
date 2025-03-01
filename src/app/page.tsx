@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { CardSearch } from './card-search';
 import { Footer } from './footer';
+import { userAgent } from 'next/server';
+import { headers } from 'next/headers';
 
 interface HomeParams {
   q?: string;
@@ -12,6 +14,7 @@ export default async function Home({
   searchParams: Promise<HomeParams>;
 }) {
   const { q: query } = await searchParams;
+  const { os } = userAgent({ headers: await headers() });
 
   return (
     <div className='flex flex-col items-center justify-items-center min-h-screen w-screen p-8 gap-2 divide-y divide-solid divide-black dark:divide-white font-[family-name:var(--font-geist-sans)]'>
@@ -26,7 +29,7 @@ export default async function Home({
         />
         <CardSearch initialQuery={query} />
       </main>
-      <Footer />
+      <Footer showCopyleftIcon={!os.name?.includes('Windows')} />
     </div>
   );
 }
