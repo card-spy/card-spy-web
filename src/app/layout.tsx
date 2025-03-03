@@ -27,7 +27,7 @@ export default function RootLayout({
       <link
         rel='search'
         type='application/opensearchdescription+xml'
-        href='https://cards.matteas.nz/opensearch.xml'
+        href='https://cardspy.nz/opensearch.xml'
         title='Card Spy'
       />
       <body

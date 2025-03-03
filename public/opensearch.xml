@@ -2,13 +2,13 @@
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
   <ShortName>Card Spy</ShortName>
   <Description>Search NZ shops for Magic: The Gathering cards</Description>
-  <Image width="32" height="32" type="image/x-icon">https://cards.matteas.nz/icon.png</Image>
+  <Image width="32" height="32" type="image/x-icon">https://cardspy.nz/icon.png</Image>
   <Tags>Card Spy Magic The Gathering Search</Tags>
   <InputEncoding>UTF-8</InputEncoding>
   <Url method="get" rel="results" type="text/html"
-    template="https://cards.matteas.nz/?q={searchTerms}" />
+    template="https://cardspy.nz/?q={searchTerms}" />
   <Url rel="self" type="application/opensearchdescription+xml"
-    template="https://cards.matteas.nz/opensearch.xml" />
+    template="https://cardspy.nz/opensearch.xml" />
   <Language>en</Language>
   <InputEncoding>UTF-8</InputEncoding>
 </OpenSearchDescription>
