@@ -41,7 +41,7 @@ jobs:
     needs: publish
 
     env:
-      APP_NAME: 'matteas.nz'
+      APP_NAME: 'cardspy.nz'
       POD_NAME: 'card-spy-web'
 
     steps:
