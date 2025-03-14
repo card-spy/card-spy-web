@@ -22,7 +22,7 @@ interface CardSearchProps {
 }
 
 export const CardSearch: FC<CardSearchProps> = ({ initialQuery = '' }) => {
-  const [searchResults, setSearchResults] = useState<Card[]>([]);
+  const [searchResults, setSearchResults] = useState<Card[][]>([]);
   const [searchQuery, setSearchQuery] = useState<string>(initialQuery);
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [isLastPage, setIsLastPage] = useState<boolean>(false);
@@ -60,7 +60,10 @@ export const CardSearch: FC<CardSearchProps> = ({ initialQuery = '' }) => {
     startTransition(async () => {
       const cardData = await getCards(query, page);
       if (cardData.length > 0) {
-        setSearchResults((searchResults) => [...searchResults, ...cardData]);
+        setSearchResults((searchResults) => {
+          const newPages = searchResults.slice(0);
+          newPages[page] = cardData;
+        });
       } else {
         setIsLastPage(true);
       }
@@ -80,7 +83,7 @@ export const CardSearch: FC<CardSearchProps> = ({ initialQuery = '' }) => {
         onChange={handleChange}
         onTypingComplete={handleTypingComplete}
       />
-      {searchResults.map((card) => (
+      {searchResults.flat().map((card) => (
         <CardResult key={uid(100)} card={card} />
       ))}
       {isPending && searchResults.length === 0 && <CardResultSkeleton />}
