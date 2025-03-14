@@ -63,6 +63,7 @@ export const CardSearch: FC<CardSearchProps> = ({ initialQuery = '' }) => {
         setSearchResults((searchResults) => {
           const newPages = searchResults.slice(0);
           newPages[page] = cardData;
+          return newPages;
         });
       } else {
         setIsLastPage(true);
