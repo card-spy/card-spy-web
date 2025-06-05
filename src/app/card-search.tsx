@@ -17,6 +17,12 @@ const updateUrl = (query: string) => {
   window.history.pushState({}, '', url.toString());
 };
 
+const resetUrl = () => {
+  const url = new URL(window.location.href);
+  url.searchParams.delete('q');
+  window.history.pushState({}, '', url.toString());
+};
+
 interface CardSearchProps {
   initialQuery?: string;
 }
@@ -33,6 +39,7 @@ export const CardSearch: FC<CardSearchProps> = ({ initialQuery = '' }) => {
     setSearchResults([]);
     setPageNumber(1);
     setIsLastPage(false);
+    resetUrl();
   };
 
   const handleChange = (query: string) => {
