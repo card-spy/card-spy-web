@@ -16,6 +16,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@catppuccin/tailwindcss": "^0.1.6",
     "@eslint/eslintrc": "^3",
     "@iconify/react": "^5.2.0",
     "@next/eslint-plugin-next": "^15.1.6",
