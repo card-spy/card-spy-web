@@ -8,6 +8,6 @@
   body > div:first-child,
   div#__next,
   div#__next > div {
-    @apply h-full bg-base text-text;
+    @apply bg-base text-text;
   }
 }
