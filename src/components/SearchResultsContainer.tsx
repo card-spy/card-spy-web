@@ -20,9 +20,14 @@ export const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
 
   if (searchResults && !isEmpty(searchResults)) {
     const flattenedResults = flat(Object.values(searchResults));
-    return flattenedResults.map((card) => (
-      <CardResult key={uid(100)} card={card} />
-    ));
+    return (
+      <>
+        {flattenedResults.map((card) => (
+          <CardResult key={uid(100)} card={card} />
+        ))}
+        {loading && <CardResultSkeleton />}
+      </>
+    );
   }
 
   return <NoResults />;
