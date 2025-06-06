@@ -43,7 +43,7 @@ export const SearchBar: FC<SearchBarProps> = ({
       <input
         autoFocus={!defaultValue}
         defaultValue={defaultValue}
-        className='h-12 w-full rounded-lg border-2 border-solid border-white/[.145] bg-white/[.06] px-9 py-0.5 font-[family-name:var(--font-geist-sans)] text-lg text-white hover:border-white hover:focus:border-black/[.08]'
+        className='h-12 w-full rounded-lg border-2 border-solid border-white/[.145] bg-white/[.06] px-9 py-0.5 font-[family-name:var(--font-geist-sans)] text-lg text-text [outline:none] hover:border-text focus:border-text'
         type='text'
         onChange={handleChange}
         placeholder='Search for a card...'

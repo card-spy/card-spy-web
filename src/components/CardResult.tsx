@@ -64,7 +64,7 @@ export const CardResult: FC<CardResultProps> = ({ card }) => {
         </div>
       </div>
       <div className='flex w-fit flex-col items-end gap-2'>
-        <div className='text-lg text-gray-100 sm:text-xl'>{card.price}</div>
+        <div className='text-lg sm:text-xl'>{card.price}</div>
       </div>
     </a>
   );
