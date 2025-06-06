@@ -24,8 +24,10 @@ interface CardSearchProps {
   initialQuery?: string;
 }
 
+export type PagedSearchResults = Record<number, Card[]>;
+
 export const CardSearch: FC<CardSearchProps> = ({ initialQuery = '' }) => {
-  const [searchResults, setSearchResults] = useState<Card[]>([]);
+  const [searchResults, setSearchResults] = useState<PagedSearchResults>({});
   const [searchQuery, setSearchQuery] = useState<string>(initialQuery);
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [isLastPage, setIsLastPage] = useState<boolean>(false);
@@ -33,7 +35,7 @@ export const CardSearch: FC<CardSearchProps> = ({ initialQuery = '' }) => {
   const [isPending, startTransition] = useTransition();
 
   const resetSearch = () => {
-    setSearchResults([]);
+    setSearchResults({});
     setPageNumber(1);
     setIsLastPage(false);
     resetUrl();
@@ -64,7 +66,11 @@ export const CardSearch: FC<CardSearchProps> = ({ initialQuery = '' }) => {
     startTransition(async () => {
       const cardData = await getCards(query, page);
       if (cardData.length > 0) {
-        setSearchResults((searchResults) => [...searchResults, ...cardData]);
+        setSearchResults((searchResults) => {
+          const newResults = searchResults;
+          newResults[page] = cardData;
+          return newResults;
+        });
       } else {
         setIsLastPage(true);
       }
