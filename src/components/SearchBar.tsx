@@ -35,7 +35,7 @@ export const SearchBar: FC<SearchBarProps> = ({
   return (
     <div className='relative'>
       <Icon
-        className='absolute top-3 left-2'
+        className='absolute left-2 top-3'
         icon='material-symbols:search-rounded'
         width='24'
         height='24'
@@ -43,7 +43,7 @@ export const SearchBar: FC<SearchBarProps> = ({
       <input
         autoFocus={!defaultValue}
         defaultValue={defaultValue}
-        className='font-[family-name:var(--font-geist-sans)] text-white bg-white/[.06] px-9 py-0.5 rounded-lg border-2 border-solid border-white/[.145] hover:border-white hover:focus:border-black/[.08] text-lg w-full h-12'
+        className='h-12 w-full rounded-lg border-2 border-solid border-white/[.145] bg-white/[.06] px-9 py-0.5 font-[family-name:var(--font-geist-sans)] text-lg text-white hover:border-white hover:focus:border-black/[.08]'
         type='text'
         onChange={handleChange}
         placeholder='Search for a card...'

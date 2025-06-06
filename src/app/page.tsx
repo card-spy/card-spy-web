@@ -17,18 +17,18 @@ export default async function Home({
   const { os } = userAgent({ headers: await headers() });
 
   return (
-    <div className='flex flex-col items-center justify-items-center min-h-screen w-screen p-4 gap-2 divide-y divide-solid divide-white font-[family-name:var(--font-geist-sans)]'>
-      <main className='flex flex-col flex-grow gap-2 sm:justify-center items-center w-full'>
-        <div className='flex flex-row items-center justify-center gap-2 w-full'>
+    <div className='flex min-h-screen w-screen flex-col items-center justify-items-center gap-2 divide-y divide-solid divide-white p-4 font-[family-name:var(--font-geist-sans)]'>
+      <main className='flex w-full flex-grow flex-col items-center gap-2 sm:justify-center'>
+        <div className='flex w-full flex-row items-center justify-center gap-2'>
           <Image
-            className='w-20 hidden sm:block'
+            className='hidden w-20 sm:block'
             src='/icon.png'
             alt='Card Spy icon'
             width={180}
             height={45}
             priority
           />
-          <p className='text-7xl font-bold text-peach font-[family-name:var(--font-racing-sans-one)]'>
+          <p className='font-[family-name:var(--font-racing-sans-one)] text-7xl font-bold text-peach'>
             CARD SPY
           </p>
         </div>

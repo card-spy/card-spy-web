@@ -27,9 +27,9 @@ export const CardResult: FC<CardResultProps> = ({ card }) => {
       href={card.storeLink}
       target='_blank'
       rel='noopener noreferrer'
-      className='flex flex-row items-start justify-between w-full min-h-24 border-2 border-solid border-white/[.145] hover:border-white rounded-lg p-4 bg-white/[.06] hover:bg-black transition-colors duration-300'
+      className='flex min-h-24 w-full flex-row items-start justify-between rounded-lg border-2 border-solid border-white/[.145] bg-white/[.06] p-4 transition-colors duration-300 hover:border-white hover:bg-black'
     >
-      <div className='flex flex-row gap-2 items-center'>
+      <div className='flex flex-row items-center gap-2'>
         {imageHasError ? (
           <FallbackCard />
         ) : (
@@ -49,22 +49,22 @@ export const CardResult: FC<CardResultProps> = ({ card }) => {
         {showImagePreview && (
           <ImagePreview cardImageUrl={card.image} triggerRef={imageRef} />
         )}
-        <div className='flex flex-col items-left'>
-          <div className='text-sm sm:text-lg font-bold'>{card.name} </div>
-          <div className='text-xs sm:text-sm text-gray-500'>{card.set}</div>
-          <div className='text-xs sm:text-sm italic text-gray-400'>
+        <div className='items-left flex flex-col'>
+          <div className='text-sm font-bold sm:text-lg'>{card.name} </div>
+          <div className='text-xs text-gray-500 sm:text-sm'>{card.set}</div>
+          <div className='text-xs italic text-gray-400 sm:text-sm'>
             {card.storeName}
           </div>
           {card.isFoil && (
-            <div className='flex flex-row items-center text-xs sm:text-sm text-amber-400'>
+            <div className='flex flex-row items-center text-xs text-amber-400 sm:text-sm'>
               Foil
               <Icon icon='fluent:sparkle-20-regular' width='20' height='20' />
             </div>
           )}
         </div>
       </div>
-      <div className='flex flex-col gap-2 items-end w-fit'>
-        <div className='text-lg sm:text-xl text-gray-100'>{card.price}</div>
+      <div className='flex w-fit flex-col items-end gap-2'>
+        <div className='text-lg text-gray-100 sm:text-xl'>{card.price}</div>
       </div>
     </a>
   );

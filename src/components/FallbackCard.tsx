@@ -2,7 +2,7 @@ import { type FC } from 'react';
 import Image from 'next/image';
 
 export const FallbackCard: FC = () => (
-  <div className='flex justify-center items-center h-24 min-w-[69px] border border-solid border-gray-300'>
+  <div className='flex h-24 min-w-[69px] items-center justify-center border border-solid border-gray-300'>
     <Image
       aria-hidden
       src='/planeswalker.svg'
