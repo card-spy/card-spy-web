@@ -1,12 +1,9 @@
 'use client';
 
 import { Card, getCards } from '@/api/getCards';
-import { CardResult } from '@/components/CardResult';
-import { CardResultSkeleton } from '@/components/CardResultSkeleton';
-import { NoResults } from '@/components/NoResults';
 import { ScrollHandler } from '@/components/ScrollHandler';
 import { SearchBar } from '@/components/SearchBar';
-import { uid } from 'radash';
+import { SearchResultsContainer } from '@/components/SearchResultsContainer';
 import { type FC, useEffect, useState, useTransition } from 'react';
 
 const MIN_LENGTH = 3;
@@ -87,12 +84,11 @@ export const CardSearch: FC<CardSearchProps> = ({ initialQuery = '' }) => {
         onChange={handleChange}
         onTypingComplete={handleTypingComplete}
       />
-      {searchResults.map((card) => (
-        <CardResult key={uid(100)} card={card} />
-      ))}
-      {isPending && searchResults.length === 0 && <CardResultSkeleton />}
-      {!isPending && searchResults.length === 0 && searchQuery.length > 0 && (
-        <NoResults />
+      {searchQuery.length > 0 && (
+        <SearchResultsContainer
+          searchResults={searchResults}
+          loading={isPending}
+        />
       )}
     </div>
   );
