@@ -33,7 +33,7 @@ export const getCards = async (
 
   const urlQuery = `https://www.mtgsingles.co.nz:14567/MtgSingle?query=${encodedQueryString}&page=${pageNumber}&pageSize=20&Country=1`;
 
-  const res = await fetch(urlQuery)
+  const res = await fetch(urlQuery, { cache: 'force-cache' })
     .then((response) => (response.body ? response.json() : []))
     .catch((error) => {
       console.error(error);
@@ -44,9 +44,7 @@ export const getCards = async (
 };
 
 const transformResponse = (cards: CardResponse[]): Card[] => {
-  const filteredCards = cards.filter(
-    (card) => card.tcgType === 'MTG'
-  );
+  const filteredCards = cards.filter((card) => card.tcgType === 'MTG');
 
   return filteredCards.map((card) => ({
     name: card.title,
@@ -56,7 +54,8 @@ const transformResponse = (cards: CardResponse[]): Card[] => {
     storeName: parseStoreName(card.store),
     storeLink: card.url,
     image: card.imageUrl,
-    isFoil: card.features.includes('Foil') || card.features.includes('Foil-Etched'),
+    isFoil:
+      card.features.includes('Foil') || card.features.includes('Foil-Etched'),
     isBorderless: card.features.includes('Borderless'),
     isRetro: card.features.includes('Retro'),
   }));
