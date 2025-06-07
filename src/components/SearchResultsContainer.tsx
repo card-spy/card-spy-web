@@ -14,21 +14,20 @@ export const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
   searchResults,
   loading,
 }) => {
-  if (loading && isEmpty(searchResults)) {
-    return <CardResultSkeleton />;
+  if (!loading && isEmpty(searchResults)) {
+    return <NoResults />;
   }
 
-  if (searchResults && !isEmpty(searchResults)) {
-    const flattenedResults = flat(Object.values(searchResults));
-    return (
-      <>
-        {flattenedResults.map((card) => (
-          <CardResult key={uid(100)} card={card} />
-        ))}
-        {loading && <CardResultSkeleton />}
-      </>
-    );
-  }
+  const flattenedResults = searchResults
+    ? flat(Object.values(searchResults))
+    : [];
 
-  return <NoResults />;
+  return (
+    <>
+      {flattenedResults.map((card) => (
+        <CardResult key={uid(100)} card={card} />
+      ))}
+      {loading && <CardResultSkeleton />}
+    </>
+  );
 };
