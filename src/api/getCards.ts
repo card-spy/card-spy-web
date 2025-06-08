@@ -33,7 +33,10 @@ export const getCards = async (
 
   const urlQuery = `https://www.mtgsingles.co.nz:14567/MtgSingle?query=${encodedQueryString}&page=${pageNumber}&pageSize=20&Country=1`;
 
-  const res = await fetch(urlQuery, { cache: 'force-cache' })
+  const res = await fetch(urlQuery, {
+    cache: 'force-cache',
+    next: { revalidate: 7200 },
+  })
     .then((response) => (response.body ? response.json() : []))
     .catch((error) => {
       console.error(error);
