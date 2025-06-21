@@ -35,7 +35,7 @@ export const getCards = async (
 
   const res = await fetch(urlQuery, {
     cache: 'force-cache',
-    next: { revalidate: 7200 },
+    next: { revalidate: 1800 },
   })
     .then((response) => (response.body ? response.json() : []))
     .catch((error) => {
