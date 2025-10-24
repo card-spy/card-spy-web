@@ -33,7 +33,20 @@ export const getCards = async (
 
   const urlQuery = `https://api.mtgsingles.co.nz/MtgSingle?query=${encodedQueryString}&page=${pageNumber}&pageSize=20&Country=1`;
 
-  const res = await fetch(urlQuery)
+  const res = await fetch(urlQuery, {
+    "credentials": "omit",
+    "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Site": "same-site"
+    },
+    "referrer": "https://mtgsingles.co.nz/",
+    "method": "GET",
+    "mode": "cors"
+  })
     .then((response) => (response.body ? response.json() : []))
     .catch((error) => {
       console.error(error);
