@@ -31,7 +31,9 @@ export const getCards = async (
 ): Promise<Card[]> => {
   const encodedQueryString = encodeURIComponent(query);
 
-  const urlQuery = `https://api.mtgsingles.co.nz/MtgSingle?query=${encodedQueryString}&page=${pageNumber}&pageSize=20&Country=1`;
+  // const urlQuery = `https://api.mtgsingles.co.nz/MtgSingle?query=${encodedQueryString}&page=${pageNumber}&pageSize=20&Country=1`;
+
+  const urlQuery = 'https://httpbin.org/headers'
 
   const res = await fetch(urlQuery, {
     method: 'GET',
@@ -41,13 +43,20 @@ export const getCards = async (
       'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36'
     }
   })
-    .then((response) => (response.body ? response.json() : []))
+    // .then((response) => (response.body ? response.json() : []))
+    .then((response) => {
+      console.log(response.body);
+      return response.json();
+    })
     .catch((error) => {
       console.error(error);
       return [];
     });
 
-  return transformResponse(res);
+  console.log(res);
+
+  return [] as Card[];
+  // return transformResponse(res);
 };
 
 const transformResponse = (cards: CardResponse[]): Card[] => {
